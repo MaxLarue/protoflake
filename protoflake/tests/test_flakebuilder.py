@@ -2,9 +2,9 @@ import unittest
 from unittest.mock import Mock
 from unittest.mock import call
 
-from flakefactory import FlakeFactory
-from descriptorbuilder import DescriptorBuilder
-from flakebuilder import FlakeBuilder
+from protoflake.flakefactory import FlakeFactory
+from protoflake.descriptorbuilder import DescriptorBuilder
+from protoflake.flakebuilder import FlakeBuilder
 
 
 class TestFlakeBuilder(unittest.TestCase):

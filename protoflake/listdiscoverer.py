@@ -3,9 +3,9 @@ This discoverer is meant to discover flakes from primitive objects such as lists
 """
 from typing import List
 
-from descriptorbuilder import DescriptorBuilder
-from flakedescriptor import FlakeDescriptor
-from flakediscoverer import FlakeDiscoverer
+from protoflake.descriptorbuilder import DescriptorBuilder
+from protoflake.flakedescriptor import FlakeDescriptor
+from protoflake.flakediscoverer import FlakeDiscoverer
 
 
 class ListDiscoverer(FlakeDiscoverer):

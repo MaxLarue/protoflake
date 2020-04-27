@@ -1,10 +1,10 @@
 import unittest
 
-from descriptors import FileSourceDescriptor
-from descriptors import CodeSourceDescriptor
-from descriptors import PrimitiveAttributeDescriptor
-from descriptors import ReferenceAttributeDescriptor
-from flakedescriptor import FlakeDescriptor
+from protoflake.descriptors import FileSourceDescriptor
+from protoflake.descriptors import CodeSourceDescriptor
+from protoflake.descriptors import PrimitiveAttributeDescriptor
+from protoflake.descriptors import ReferenceAttributeDescriptor
+from protoflake.flakedescriptor import FlakeDescriptor
 
 
 class TestDescriptors(unittest.TestCase):
@@ -27,10 +27,8 @@ class TestDescriptors(unittest.TestCase):
         self.assertEqual(descriptor.value, 3)
 
     def test_building_a_reference_attribute_descriptor(self):
-        proto = 'my.module.class'
         flake_id = 'where-12345'
-        descriptor = ReferenceAttributeDescriptor(proto, flake_id)
-        self.assertEqual(descriptor.reference_proto_name, proto)
+        descriptor = ReferenceAttributeDescriptor(flake_id)
         self.assertEqual(descriptor.reference_flake_id, flake_id)
 
     def test_building_a_flake_descriptor(self):

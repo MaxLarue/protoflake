@@ -2,12 +2,12 @@ import unittest
 from unittest.mock import patch
 from unittest.mock import Mock
 
-from listdiscoverer import ListDiscoverer
+from protoflake.listdiscoverer import ListDiscoverer
 
 
 class TestListDiscoverer(unittest.TestCase):
 
-    @patch('listdiscoverer.DescriptorBuilder')
+    @patch('protoflake.listdiscoverer.DescriptorBuilder')
     def test_it_delegates_to_descriptor_builder(self, builder_mock):
         instance_mock = Mock()
         builder_mock.return_value = instance_mock

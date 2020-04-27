@@ -6,12 +6,12 @@ from typing import Tuple
 from typing import Union
 from typing import cast
 
-from attributedescriptor import AttributeDescriptor
-from flakedescriptor import FlakeDescriptor
-from descriptors import ListAttributeDescriptor
-from descriptors import NestedFlakeDescriptor
-from descriptors import PrimitiveAttributeDescriptor
-from descriptors import ReferenceAttributeDescriptor
+from protoflake.attributedescriptor import AttributeDescriptor
+from protoflake.flakedescriptor import FlakeDescriptor
+from protoflake.descriptors import ListAttributeDescriptor
+from protoflake.descriptors import NestedFlakeDescriptor
+from protoflake.descriptors import PrimitiveAttributeDescriptor
+from protoflake.descriptors import ReferenceAttributeDescriptor
 
 
 class DescriptorBuilder(object):
@@ -32,8 +32,7 @@ class DescriptorBuilder(object):
     @staticmethod
     def process_ref(value: Any) -> AttributeDescriptor:
         flake_id = value.get('id')
-        proto = value.get('proto')
-        return ReferenceAttributeDescriptor(proto, flake_id)
+        return ReferenceAttributeDescriptor(flake_id)
 
     def process_node(self, node, root=False) -> Union[FlakeDescriptor, AttributeDescriptor]:
         if node.get('proto'):

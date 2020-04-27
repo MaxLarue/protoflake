@@ -5,7 +5,7 @@ from abc import ABC
 from abc import abstractmethod
 from typing import List
 
-from flakedescriptor import FlakeDescriptor
+from protoflake.flakedescriptor import FlakeDescriptor
 
 
 class FlakeDiscoverer(ABC):

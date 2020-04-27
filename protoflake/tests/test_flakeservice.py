@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import Mock
 
-from flakeservice import FlakeService
+from protoflake.flakeservice import FlakeService
 
 
 class TestFlakeService(unittest.TestCase):

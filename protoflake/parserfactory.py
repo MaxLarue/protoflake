@@ -1,10 +1,10 @@
 """
 Parser factory, which returns the right parser depending on the source
 """
-from descriptors import FileSourceDescriptor
-from parsers import JsonFlakeParser
-from parsers import XmlFlakeParser
-from parsers import YamlFlakeParser
+from protoflake.descriptors import FileSourceDescriptor
+from protoflake.parsers import JsonFlakeParser
+from protoflake.parsers import XmlFlakeParser
+from protoflake.parsers import YamlFlakeParser
 
 
 class NoSuitableParserFound(Exception):

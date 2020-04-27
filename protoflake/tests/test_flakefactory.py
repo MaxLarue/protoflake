@@ -1,7 +1,7 @@
 import unittest
 
-from flakefactory import FlakeFactory
-from flakefactory import FlakeAttributeOverwriting
+from protoflake.flakefactory import FlakeFactory
+from protoflake.flakefactory import FlakeAttributeOverwriting
 
 
 class TestFlakeFactory(unittest.TestCase):

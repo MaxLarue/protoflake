@@ -11,11 +11,11 @@ from typing import Any
 from dataclasses import dataclass
 import os
 
-from flakedescriptor import FlakeDescriptor
-from attributedescriptor import AttributeDescriptor
+from protoflake.flakedescriptor import FlakeDescriptor
+from protoflake.attributedescriptor import AttributeDescriptor
 
-from flakeprovider import FlakeProvider
-from sourcedescriptor import SourceDescriptor
+from protoflake.flakeprovider import FlakeProvider
+from protoflake.sourcedescriptor import SourceDescriptor
 
 
 @dataclass
@@ -66,7 +66,6 @@ class ReferenceAttributeDescriptor(AttributeDescriptor):
     def get_primitive_value(self, flake_provider: FlakeProvider):
         return flake_provider.get_ref(self.reference_flake_id)
 
-    reference_proto_name: str
     reference_flake_id: str
 
 

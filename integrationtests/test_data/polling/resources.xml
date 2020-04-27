@@ -1,3 +1,6 @@
 <flakes>
-
+    <integrationtests.test_pollingapp.PollService id="poll_service" />
+    <integrationtests.test_pollingapp.UiService id="ui_service">
+        <ref-poll_service id="poll_service" />
+    </integrationtests.test_pollingapp.UiService>
 </flakes>

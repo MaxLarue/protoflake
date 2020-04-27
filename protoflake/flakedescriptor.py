@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from typing import Dict
 
-from sourcedescriptor import SourceDescriptor
-from attributedescriptor import AttributeDescriptor
+from protoflake.sourcedescriptor import SourceDescriptor
+from protoflake.attributedescriptor import AttributeDescriptor
 
 
 @dataclass
@@ -19,4 +19,4 @@ class FlakeDescriptor(object):
 
     @property
     def proto_module(self):
-        return self.proto_name.rsplit('.', 1)[1]
+        return self.proto_name.rsplit('.', 1)[0]

@@ -1,8 +1,8 @@
 import unittest
 from unittest.mock import Mock
 
-from discoveryservice import DiscoveryService
-from descriptorbuilder import DescriptorBuilder
+from protoflake.discoveryservice import DiscoveryService
+from protoflake.descriptorbuilder import DescriptorBuilder
 
 
 class TestDiscoveryService(unittest.TestCase):

@@ -3,8 +3,9 @@ Service responsible for gathering and storing FlakeDescriptors
 """
 from typing import List
 
-from filediscoverer import FileDiscoverer
-from listdiscoverer import ListDiscoverer
+from protoflake.filediscoverer import FileDiscoverer
+from protoflake.listdiscoverer import ListDiscoverer
+from protoflake.parserfactory import ParserFactory
 
 
 class DiscoveryService(object):
@@ -50,7 +51,7 @@ class DiscoveryService(object):
         :param file_paths: list of file paths to load (in the same order they are specified)
         :return: Nothing, but stores the discovered flake descriptors internally.
         """
-        self.discover(self.file_discoverer_class, file_paths)
+        self.discover(self.file_discoverer_class, ParserFactory, file_paths)
 
     def from_list(self, definitions):
         """

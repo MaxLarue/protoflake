@@ -4,11 +4,11 @@ into primitive attributes. All this for building complex flakes.
 Once flake attributes have been transformed to primitive types, the flake builder will save the new
 flake instance inside the flake registry and return it.
 """
-from flakedescriptor import FlakeDescriptor
-from flakefactory import FlakeFactory
-from flakeregistry import FlakeRegistry
-from flakeprovider import FlakeProvider
-from protoregistry import ProtoRegistry
+from protoflake.flakedescriptor import FlakeDescriptor
+from protoflake.flakefactory import FlakeFactory
+from protoflake.flakeregistry import FlakeRegistry
+from protoflake.flakeprovider import FlakeProvider
+from protoflake.protoregistry import ProtoRegistry
 
 
 class FlakeBuilder(FlakeProvider):

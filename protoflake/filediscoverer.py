@@ -4,10 +4,10 @@ Infer the right parser to use based on file extension and an injected factory.
 """
 from typing import List
 
-from descriptors import FileSourceDescriptor
-from flakedescriptor import FlakeDescriptor
-from flakediscoverer import FlakeDiscoverer
-from parsers import FlakeParser
+from protoflake.descriptors import FileSourceDescriptor
+from protoflake.flakedescriptor import FlakeDescriptor
+from protoflake.flakediscoverer import FlakeDiscoverer
+from protoflake.parsers import FlakeParser
 
 
 class FileDiscoverer(FlakeDiscoverer):

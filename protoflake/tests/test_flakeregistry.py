@@ -1,8 +1,8 @@
 import unittest
 from unittest.mock import Mock
 
-from flakeregistry import FlakeRegistry
-from flakeregistry import FlakeAlreadyExist
+from protoflake.flakeregistry import FlakeRegistry
+from protoflake.flakeregistry import FlakeAlreadyExist
 
 
 class TestFlakeRegistry(unittest.TestCase):

@@ -1,11 +1,11 @@
 import unittest
 
-from descriptors import FileSourceDescriptor
-from parserfactory import NoSuitableParserFound
-from parserfactory import ParserFactory
-from parsers import JsonFlakeParser
-from parsers import XmlFlakeParser
-from parsers import YamlFlakeParser
+from protoflake.descriptors import FileSourceDescriptor
+from protoflake.parserfactory import NoSuitableParserFound
+from protoflake.parserfactory import ParserFactory
+from protoflake.parsers import JsonFlakeParser
+from protoflake.parsers import XmlFlakeParser
+from protoflake.parsers import YamlFlakeParser
 
 
 class TestParserFactory(unittest.TestCase):

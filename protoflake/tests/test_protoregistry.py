@@ -2,10 +2,10 @@ import unittest
 from unittest.mock import patch
 from unittest.mock import Mock
 
-from protoregistry import ProtoRegistry
-from protoregistry import ProtoModuleNotFound
-from protoregistry import ProtoClassNotFound
-from protoregistry import ProtoClassNotAClass
+from protoflake.protoregistry import ProtoRegistry
+from protoflake.protoregistry import ProtoModuleNotFound
+from protoflake.protoregistry import ProtoClassNotFound
+from protoflake.protoregistry import ProtoClassNotAClass
 
 
 FAKE_ATTR = 'hello'
@@ -17,10 +17,10 @@ class TestProtoRegistry(unittest.TestCase):
         self.registry = ProtoRegistry()
 
     def test_it_can_retrieve_itself(self):
-        self.assertEqual(self.registry.get('protoregistry', 'ProtoRegistry'), ProtoRegistry)
+        self.assertEqual(self.registry.get('protoflake.protoregistry', 'ProtoRegistry'), ProtoRegistry)
 
-    @patch('protoregistry.inspect.isclass')
-    @patch('protoregistry.importlib')
+    @patch('protoflake.protoregistry.inspect.isclass')
+    @patch('protoflake.protoregistry.importlib')
     def test_it_only_retrieve_modules_once_for_the_same_class(self, importlib_mock, isclass_mock):
         isclass_mock.return_value = True
         import_mock = Mock()
@@ -37,8 +37,8 @@ class TestProtoRegistry(unittest.TestCase):
         import_mock.assert_called_once()
         import_mock.assert_called_with(module_name)
 
-    @patch('protoregistry.inspect.isclass')
-    @patch('protoregistry.importlib')
+    @patch('protoflake.protoregistry.inspect.isclass')
+    @patch('protoflake.protoregistry.importlib')
     def test_it_only_retrieve_modules_once_for_different_class_same_module(self, importlib_mock, isclass_mock):
         isclass_mock.return_value = True
         import_mock = Mock()
@@ -61,7 +61,7 @@ class TestProtoRegistry(unittest.TestCase):
         with self.assertRaises(ProtoModuleNotFound):
             self.registry.get('some.thing.that.will.never.exist', 'AClass')
 
-    @patch('protoregistry.importlib')
+    @patch('protoflake.protoregistry.importlib')
     def test_it_throws_proto_class_not_found_if_module_does_not_have_class(self, importlib_mock):
         import_mock = Mock()
         import_mock.return_value = 'some thing without class attribute'
@@ -71,4 +71,4 @@ class TestProtoRegistry(unittest.TestCase):
 
     def test_it_throws_proto_class_not_a_class_if_module_attribute_is_not_a_class(self):
         with self.assertRaises(ProtoClassNotAClass):
-            self.registry.get('tests.test_protoregistry', 'FAKE_ATTR')
+            self.registry.get('protoflake.tests.test_protoregistry', 'FAKE_ATTR')

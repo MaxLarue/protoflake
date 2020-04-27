@@ -3,7 +3,7 @@ env/
 venv/
 # coverage
 htmlcov/
-.coverage
+protoflake/.coverage
 # python stuff
 __pycache__/
 *.py[cod]

@@ -2,8 +2,8 @@
 The flake service is responsible for instantiating and retrieving flakes, it relies on some
 discovery service to have been injected in order to get the flake definitions.
 """
-from discoveryservice import DiscoveryService
-from flakebuilder import FlakeBuilder
+from protoflake.discoveryservice import DiscoveryService
+from protoflake.flakebuilder import FlakeBuilder
 
 
 class FlakeService(object):

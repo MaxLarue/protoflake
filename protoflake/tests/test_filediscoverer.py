@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import Mock
 
-from filediscoverer import FileDiscoverer
+from protoflake.filediscoverer import FileDiscoverer
 
 
 class TestFileDiscoverer(unittest.TestCase):

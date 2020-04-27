@@ -1,7 +1,7 @@
 from abc import ABC
 from abc import abstractmethod
 
-from flakeprovider import FlakeProvider
+from protoflake.flakeprovider import FlakeProvider
 
 
 class AttributeDescriptor(ABC):

@@ -18,7 +18,7 @@ class FlakeFactory(object):
     def build_flake(proto, flake_attrs):
         instance = proto()
         for attr_name, attr_value in flake_attrs.items():
-            if hasattr(instance, attr_name):
+            if getattr(instance, attr_name, None):
                 raise FlakeAttributeOverwriting(instance, attr_name, attr_value)
             setattr(instance, attr_name, attr_value)
         return instance

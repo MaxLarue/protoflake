@@ -2,16 +2,16 @@ import unittest
 from typing import Any
 from typing import cast
 
-from constants import XML_ROOT
-from constants import YAML_ROOT
-from descriptors import CodeSourceDescriptor
-from flakedescriptor import FlakeDescriptor
-from parsers import InvalidRootYaml
-from parsers import XmlFlakeParser
-from parsers import JsonFlakeParser
-from parsers import InvalidXmlRootException
-from parsers import InvalidRootJson
-from parsers import YamlFlakeParser
+from protoflake.constants import XML_ROOT
+from protoflake.constants import YAML_ROOT
+from protoflake.descriptors import CodeSourceDescriptor
+from protoflake.flakedescriptor import FlakeDescriptor
+from protoflake.parsers import InvalidRootYaml
+from protoflake.parsers import XmlFlakeParser
+from protoflake.parsers import JsonFlakeParser
+from protoflake.parsers import InvalidXmlRootException
+from protoflake.parsers import InvalidRootJson
+from protoflake.parsers import YamlFlakeParser
 
 
 class TestXmlParser(unittest.TestCase):
@@ -49,9 +49,9 @@ class TestXmlParser(unittest.TestCase):
         self.assertEqual(cast(CodeSourceDescriptor, parser.get_source()).hint, func_name)
 
     def test_parsing_a_simple_flake_from_file(self):
-        func_name = TestXmlParser.test_parsing_a_simple_flake.__qualname__
+        TestXmlParser.test_parsing_a_simple_flake.__qualname__
         parser = XmlFlakeParser()
-        flakes: Any = parser.from_file('./tests/test_data/simple_file.xml')
+        flakes: Any = parser.from_file('./protoflake/tests/test_data/simple_file.xml')
         self.assertEqual(1, len(flakes))
         self.assertIsInstance(flakes[0], FlakeDescriptor)
         self.assertEqual(flakes[0].id, 'first flake')
@@ -163,14 +163,13 @@ class TestXmlParser(unittest.TestCase):
         xml = '''
         <%s>
             <resource.body id='first flake'>
-                <ref-color proto="my.module.color" id="some id" />
+                <ref-color id="some id" />
             </resource.body>
         </%s>
         ''' % (XML_ROOT, XML_ROOT)
         parser = XmlFlakeParser()
         flakes: Any = parser.from_string(xml, TestXmlParser.test_parsing_ref.__qualname__)
         self.assertEqual(1, len(flakes))
-        self.assertEqual(flakes[0].attrs.get('color').reference_proto_name, 'my.module.color')
         self.assertEqual(flakes[0].attrs.get('color').reference_flake_id, 'some id')
 
     def test_parsing_nested_flakes(self):
@@ -309,7 +308,6 @@ class TestJsonParser(unittest.TestCase):
         parser = JsonFlakeParser()
         flakes: Any = parser.from_string(json, TestJsonParser.test_parsing_ref.__qualname__)
         self.assertEqual(1, len(flakes))
-        self.assertEqual(flakes[0].attrs.get('color').reference_proto_name, 'my.module.color')
         self.assertEqual(flakes[0].attrs.get('color').reference_flake_id, 'some id')
 
     def test_parsing_nested_flakes(self):
@@ -455,14 +453,12 @@ class TestYamlParser(unittest.TestCase):
             - proto: body.resource
               id: body
               color:
-                proto: my.module.color
                 id: some id
                 is_flake_ref: True
         ''' % YAML_ROOT
         parser = YamlFlakeParser()
         flakes: Any = parser.from_string(yaml, TestYamlParser.test_parsing_ref.__qualname__)
         self.assertEqual(1, len(flakes))
-        self.assertEqual(flakes[0].attrs.get('color').reference_proto_name, 'my.module.color')
         self.assertEqual(flakes[0].attrs.get('color').reference_flake_id, 'some id')
 
     def test_parsing_nested_flakes(self):

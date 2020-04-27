@@ -9,24 +9,24 @@ from typing import Tuple
 
 from yaml import safe_load as yaml_load
 
-from constants import XML_BOOL
-from constants import XML_FLOAT
-from constants import XML_INT
-from constants import XML_LIST
-from constants import XML_NESTED_FLAKE
-from constants import XML_REF
-from constants import XML_ROOT
-from constants import YAML_ROOT
-from attributedescriptor import AttributeDescriptor
-from descriptors import CodeSourceDescriptor
-from descriptors import FileSourceDescriptor
-from flakedescriptor import FlakeDescriptor
-from descriptors import ListAttributeDescriptor
-from descriptors import NestedFlakeDescriptor
-from descriptors import PrimitiveAttributeDescriptor
-from descriptors import ReferenceAttributeDescriptor
-from sourcedescriptor import SourceDescriptor
-from descriptorbuilder import DescriptorBuilder
+from protoflake.constants import XML_BOOL
+from protoflake.constants import XML_FLOAT
+from protoflake.constants import XML_INT
+from protoflake.constants import XML_LIST
+from protoflake.constants import XML_NESTED_FLAKE
+from protoflake.constants import XML_REF
+from protoflake.constants import XML_ROOT
+from protoflake.constants import YAML_ROOT
+from protoflake.attributedescriptor import AttributeDescriptor
+from protoflake.descriptors import CodeSourceDescriptor
+from protoflake.descriptors import FileSourceDescriptor
+from protoflake.flakedescriptor import FlakeDescriptor
+from protoflake.descriptors import ListAttributeDescriptor
+from protoflake.descriptors import NestedFlakeDescriptor
+from protoflake.descriptors import PrimitiveAttributeDescriptor
+from protoflake.descriptors import ReferenceAttributeDescriptor
+from protoflake.sourcedescriptor import SourceDescriptor
+from protoflake.descriptorbuilder import DescriptorBuilder
 
 
 class ParserException(Exception):
@@ -106,9 +106,8 @@ class XmlFlakeParser(FlakeParser):
 
     @staticmethod
     def process_ref(key: str, node) -> Tuple[str, ReferenceAttributeDescriptor]:
-        proto = node.attrib['proto']
         flake_id = node.attrib['id']
-        attr = ReferenceAttributeDescriptor(proto, flake_id)
+        attr = ReferenceAttributeDescriptor(flake_id)
         return key, attr
 
     def process_list(self, key: str, node) -> Tuple[str, ListAttributeDescriptor]:

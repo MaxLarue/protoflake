@@ -15,7 +15,7 @@ class ProtoModuleNotFound(ImportError):
 class ProtoClassNotFound(ImportError):
     def __init__(self, module_name, class_name, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.msg = 'Unable to find class %s in module %s' % (module_name, class_name)
+        self.msg = 'Unable to find class %s in module %s' % (class_name, module_name)
 
 
 class ProtoClassNotAClass(ImportError):
