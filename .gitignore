@@ -1,0 +1,32 @@
+# virtual env
+env/
+venv/
+# coverage
+htmlcov/
+.coverage
+# python stuff
+__pycache__/
+*.py[cod]
+*$py.class
+# Distribution / packaging
+*.egg_info
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+# ide stuff
+.idea
+.vscode
